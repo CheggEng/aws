@@ -180,6 +180,7 @@ def create_volume(snapshot_id, size, availability_zone, timeout, volume_type, pi
   end
 
   nv = ec2.create_volume(params)
+  sleep 30
   Chef::Log.debug("Created new #{nv[:encrypted] ? 'encryped' : ''} volume #{nv[:volume_id]}#{snapshot_id ? " based on #{snapshot_id}" : ''}")
 
   # block until created
